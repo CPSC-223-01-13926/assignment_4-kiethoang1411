@@ -20,7 +20,7 @@ while(True):
 
     if mychoice == 1:
         myfile = input ("Enter Data Filename:")
-        weather = functions.read_data(myfile) 
+        weather = functions.read_data(filename = myfile) 
     elif mychoice == 2:
         dt = input("Enter date: ")
         tm = input("Enter time: ")
@@ -28,13 +28,13 @@ while(True):
         h = int(input("Enter humidity: "))
         r = float(input("Enter the Rainfall: "))
         weather[dt+tm] = {'t': t, 'h' : h, 'r' : r}
-        functions.write_data(weather, myfile)
+        functions.write_data(data = weather, filenam = myfile)
     elif mychoice == 3:
         d = input("Enter date: ")
-        display = functions.report_daily(weather,d)
+        display = functions.report_daily(data = weather,date = d)
         print(display)
     elif mychoice == 4:
-        display = functions.report_historical(weather)
+        display = functions.report_historical(data = weather)
         print(display)
     elif mychoice == 9:
         break

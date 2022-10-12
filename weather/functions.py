@@ -1,4 +1,4 @@
-from calendar import calendar
+import calendar
 import json
 
 def read_data(filename):
@@ -62,7 +62,7 @@ def report_daily(data, date):
                         t = data[key]['t']
                         h = data[key]['h']
                         r = data[key]['r']
-                        display = display + f'{m:22}{tm:8}{t:13}{h:10}{r:10:2f}\n' 
+                        display = display + f'{m:22}{tm:8}{t:13}{h:10}{r:10:2f}' + "\n" 
         return display
 
 def report_historical(data):
@@ -70,18 +70,18 @@ def report_historical(data):
         display += "Minimum      Maximum   Minumum   Maximum     Total\n"
         display +=  "Date                  Temperature  Temperature  Humidity  Humidity  Rainfall"
         display += "====================  ===========  ===========  ========  ========  ======== "
-        h = ''
+        d = ''
 
         for key in data:
-                if h == key[0:8]:
+                if d == key[0:8]:
                         continue
                 else:
-                        h = key[0:8]
-                        m = calendar.month_name(h[4:6]) + " " + str(int(h[6:8])) + "," + str(int(h[0:4]))
-                        min_temp = min_temperature(data,h)
-                        max_temp = max_temperature(data,h)
-                        min_hum = min_humidity(data,h)
-                        max_hum = max_humidity(data,h)
-                        rain = tot_rain(data,h)
-        display += f'{m:20}{min_temp:13}{max_temp:13}{min_hum:10}{max_hum:10}{rain:10:2f}' + "/n"
+                        d = key[0:8]
+                        m = calendar.month_name(d[4:6]) + " " + str(int(d[6:8])) + "," + str(int(d[0:4]))
+                        min_temp = min_temperature(data = data, date =d)
+                        max_temp = max_temperature(data = data, date =d)
+                        min_hum = min_humidity(data = data, date =d)
+                        max_hum = max_humidity(data = data, date =d)
+                        rain = tot_rain(data = data, date =d)
+                display += f'{m:20}{min_temp:13}{max_temp:13}{min_hum:10}{max_hum:10}{rain:10:2f}' + "\n"
         return display
