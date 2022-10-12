@@ -78,12 +78,10 @@ def report_historical(data):
                 else:
                         h = key[0:8]
                         m = calendar.month_name(h[4:6]) + " " + str(int(h[6:8])) + "," + str(int(h[0:4]))
-        min_temp = min_temperature(data,h)
-        max_temp = max_temperature(data,h)
-        min_hum = min_humidity(data,h)
-        max_hum = max_humidity(data,h)
-        rain = tot_rain(data,h)
-
+                        min_temp = min_temperature(data,h)
+                        max_temp = max_temperature(data,h)
+                        min_hum = min_humidity(data,h)
+                        max_hum = max_humidity(data,h)
+                        rain = tot_rain(data,h)
         display += f'{m:20}{min_temp:13}{max_temp:13}{min_hum:10}{max_hum:10}{rain:10:2f}' + "/n"
-
         return display
